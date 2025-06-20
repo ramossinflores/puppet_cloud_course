@@ -1,7 +1,7 @@
 
 # 📦 Gestión de la Configuración y la Nube (Puppet + GCP)
 
-Este repositorio documenta el progreso, las prácticas, manifiestos `.pp`, notas técnicas y desafíos realizados en el curso **Gestión de la Configuración y la Nube**, perteneciente al programa **Google IT Automation with Python**, cursado gracias a una **beca del SEPE (Servicio Público de Empleo Estatal)**.
+Este repo documenta el progreso, las prácticas, manifiestos `.pp`, notas técnicas y desafíos realizados en el curso **Gestión de la Configuración y la Nube**, perteneciente al programa **Google IT Automation with Python**, cursado gracias a una **beca del SEPE (Servicio Público de Empleo Estatal)**.
 
 ## 🎯 Objetivo del curso
 
@@ -21,15 +21,12 @@ puppet-cloud-course/
 │   ├── manifests/
 │   ├── notes/
 │   ├── labs/
-│   └── challenge/
 ├── module3_automatizacion_nube/
 │   ├── notes/
 │   ├── cloud/
-│   └── challenge/
 ├── module4_gestion_nube_escala/
 │   ├── notes/
 │   ├── cloud/
-│   └── challenge/
 ├── .gitignore
 └── README.md
 
@@ -51,7 +48,6 @@ puppet-cloud-course/
 - Los **manifiestos Puppet** se encuentran en la carpeta `manifests/` del módulo 2.
 - Las **notas técnicas** en Markdown están dentro de cada carpeta `notes/`.
 - Los **laboratorios prácticos (Qwiklabs)** se documentan en `labs/`.
-- Los **desafíos evaluables** (actividades finales de módulo) están en `challenge/`.
 - La carpeta `cloud/` contiene archivos y plantillas utilizadas en despliegues sobre Google Cloud.
 
 ---
@@ -78,4 +74,4 @@ sudo puppet apply /vagrant/module2_despliegue_puppet/manifests/01_aplicacion_loc
 
 **Laura Ramos Granados**
 Administradora de Sistemas en formación.
-Este repositorio forma parte del programa oficial **Google IT Automation with Python**, cursado con el apoyo de una **beca del SEPE**, como parte de mi desarrollo profesional en automatización, sistemas, infraestructura cloud y tecnologías DevOps.
+Este repositorio forma parte del programa oficial **Google IT Automation with Python**, cursado con el apoyo de una **beca del SEPE**, como parte de mi desarrollo profesional en automatización, sistemas, infraestructura cloud y tecnologías DevOps 🩷
