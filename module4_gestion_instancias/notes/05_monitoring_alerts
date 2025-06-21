@@ -1,0 +1,94 @@
+
+# 📝 Clase: Monitorización y Alertas en la Nube
+
+**Módulo:** 4 – Introducción a la Computación en la Nube
+**Fecha:** 2025‑06‑21
+**Duración:** \~12–15 min
+**Fuente:** Curso “Configuration Management and the Cloud” – Google IT Automation
+
+## 💡 Conceptos clave
+
+### 🔍 ¿Qué es la monitorización?
+
+La **monitorización** es el proceso de recolectar y analizar datos sobre el comportamiento del sistema para:
+
+* Detectar fallos o anomalías.
+* Confirmar el correcto funcionamiento.
+* Tomar decisiones de mejora.
+
+#### Tipos de métricas
+
+* **Genéricas**: uso de CPU, RAM, espacio en disco...
+* **Específicas del servicio**: compras exitosas, correos enviados, errores HTTP...
+
+## 🧮 Códigos de estado HTTP
+
+| Código | Significado        | Interpretación             |
+| ------ | ------------------ | -------------------------- |
+| 2xx    | Éxito              | Todo funciona              |
+| 4xx    | Error del cliente  | Fallo en la solicitud      |
+| 5xx    | Error del servidor | Fallo interno del servicio |
+
+➡️ **Importante**: monitorea cuántos códigos 500 aparecen, ya que indican errores críticos del backend
+
+## 📊 Sistemas de monitorización
+
+| Tipo        | Ejemplos                                          |
+| ----------- | ------------------------------------------------- |
+| Gestionados | AWS CloudWatch, Google Stackdriver, Azure Monitor |
+| Externos    | Prometheus, Datadog, Nagios                       |
+
+#### Métodos de envío
+
+* **Pull (extracción)**: el sistema consulta al servicio.
+* **Push (empuje)**: el servicio envía datos al sistema.
+
+📈 Estos datos pueden mostrarse en **dashboards históricos y comparativos**
+
+## 📦 Tipos de monitoreo
+
+| Tipo          | Descripción                                                       |
+| ------------- | ----------------------------------------------------------------- |
+| **White-box** | Interno al sistema (variables, logs, métricas personalizadas)     |
+| **Black-box** | Externo al sistema (respuestas desde fuera, tiempos de respuesta) |
+
+## 🚨 Sistema de alertas
+
+> Las alertas notifican automáticamente si un servicio se comporta de forma anormal
+
+### Métodos básicos
+
+* `cron` + script en Bash o Python que envía correo si algo falla.
+* Sistemas integrados que analizan métricas en tiempo real y generan alertas.
+
+### Criterios para alertar
+
+| Situación                              | ¿Debe generar alerta?     |
+| -------------------------------------- | ------------------------- |
+| RAM supera 10 GB                       | ✅ Sí, puede causar fallos |
+| 50% de respuestas con error 500        | ✅ Sí, es crítico          |
+| Disco al 80% de uso                    | ⚠️ Sí, pero no urgente    |
+| Consulta muy pesada a la base de datos | ❌ No, si no es procesable |
+
+## 📱 Tipos de alerta
+
+| Tipo        | Canal habitual                         | Urgencia        |
+| ----------- | -------------------------------------- | --------------- |
+| **Páginas** | SMS, llamada, app móvil, email urgente | Muy alta        |
+| **Tickets** | Email, Jira, Slack, sistemas ITSM      | Atención normal |
+
+➡️ **Solo debes recibir alertas procesables**, es decir, aquellas en las que puedas actuar
+
+## 🧠 Buenas prácticas
+
+* No alertar por fallos únicos (ej. fallo puntual en cron)
+* Alertar si el fallo es persistente (ej. 3 fallos consecutivos)
+* **Clasifica las alertas**: críticas vs. no críticas
+* Colabora con tu equipo para decidir **qué métricas alertan y cómo**.
+
+## ✅ Resumen final
+
+* La monitorización permite conocer el estado real del sistema y detectar errores
+* Las alertas te liberan de revisar manualmente, pero deben estar bien configuradas
+* Las alertas innecesarias generan ruido; las no configuradas a tiempo generan frustración
+* Con buenos dashboards y reglas, puedes anticiparte a los problemas antes de que afecten a los usuarios.
