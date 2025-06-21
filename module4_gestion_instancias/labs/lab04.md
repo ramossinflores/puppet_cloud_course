@@ -4,8 +4,6 @@
 
 Solucionar un **error 500** en un servidor web (`ws01`) causado por un **conflicto de puertos**, restaurar el servicio Apache2 y eliminar un proceso no deseado que lo bloqueaba.
 
----
-
 ## 🧭 Paso a paso detallado
 
 ### 1. 🕵️‍♀️ Verifica el error
@@ -13,8 +11,6 @@ Solucionar un **error 500** en un servidor web (`ws01`) causado por un **conflic
 Abre la IP pública de `ws01` → Muestra **HTTP 500 Internal Server Error**.
 
 > Esto indica que el servidor ha tenido un problema inesperado del lado backend.
-
----
 
 ### 2. 🔧 Comprueba el estado de Apache
 
@@ -24,8 +20,6 @@ sudo systemctl status apache2
 
 📌 Resultado: `failed (Result: exit-code)`
 📌 Indica que **Apache no puede iniciar** correctamente.
-
----
 
 ### 3. 🚨 Intenta reiniciar Apache
 
@@ -38,8 +32,6 @@ sudo systemctl restart apache2
 ```bash
 sudo journalctl -xeu apache2.service
 ```
-
----
 
 ### 4. 🔍 Identifica la causa raíz
 
@@ -55,8 +47,6 @@ sudo systemctl status apache2
 
 👉 El **puerto 80 ya está en uso** → Apache no puede "escuchar" en él.
 
----
-
 ### 5. 🧠 ¿Quién está usando el puerto 80?
 
 ```bash
@@ -70,8 +60,6 @@ tcp 0 0 0.0.0.0:80 ... LISTEN 1356/python3
 ```
 
 🔎 PID del proceso que ocupa el puerto 80 → `1356` (ejemplo)
-
----
 
 ### 6. 🔍 Verifica qué script es
 
@@ -87,8 +75,6 @@ ps -ax | grep python3
 
 👉 Ese script está tomando el puerto 80.
 
----
-
 ### 7. 💀 Mata el proceso
 
 ```bash
@@ -96,8 +82,6 @@ sudo kill 1371
 ```
 
 Pero el proceso vuelve a iniciar... 🔁
-
----
 
 ### 8. 🧰 Verifica si es un servicio activo
 
@@ -120,8 +104,6 @@ sudo systemctl disable jimmytest
 
 ✅ Ahora el proceso no se volverá a iniciar.
 
----
-
 ### 9. 🔁 Confirma que el puerto 80 está libre
 
 ```bash
@@ -129,8 +111,6 @@ sudo netstat -nlp
 ```
 
 Debe **no aparecer ninguna entrada con el puerto 80**.
-
----
 
 ### 10. 🚀 Reinicia Apache
 
@@ -142,8 +122,6 @@ Abre el navegador → La IP de `ws01` debe mostrar:
 
 > ✅ Página por defecto de Apache2 Ubuntu
 
----
-
 ## 📌 Conceptos que estás aplicando
 
 | Comando o concepto       | Qué hace / Por qué se usa                              |                                              |
@@ -154,8 +132,6 @@ Abre el navegador → La IP de `ws01` debe mostrar:
 | `kill`                   | Termina un proceso por su PID                          |                                              |
 | `systemctl stop/disable` | Detiene y desactiva un servicio de `systemd`           |                                              |
 | `journalctl -xeu`        | Muestra errores y logs detallados de servicios systemd |                                              |
-
----
 
 ## 🧠 Consejo final
 
